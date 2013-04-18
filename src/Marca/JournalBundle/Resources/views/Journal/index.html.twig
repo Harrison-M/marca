@@ -10,7 +10,16 @@ $('#journal_new').click(function(){
   $('#journal_modal').modal({
   backdrop: false
   });
-});    
+});  
+{% for journal in journal %}  
+$('#response{{journal.id}}').click(function(){
+  $('#journal_modal').load('{{ course_path('response_new_modal', { 'sourceid': journal.id, 'source': 'journal','view': 'app' }) }}');
+  $('#journal_modal').modal({
+  backdrop: false
+  });
+});  
+{% endfor %}
+    
 });
 </script>
 {% if app.request.attributes.get('_route')=='journal_user' %}
@@ -46,7 +55,7 @@ Journal entries by {{ user.firstname }} {{ user.lastname }}
 {% if journal.isOwner(app.user.username) %}
         <a class="btn btn-primary btn-small" href="{{ course_path('journal_edit', { 'id': journal.id }) }}">Edit</a>
 {% endif %} 
-        <a class="btn btn-info btn-small" href="{{ course_path('response_new', { 'sourceid': journal.id, 'source': 'journal','view': 'app' }) }}">Respond</a>
+        <a id="response{{journal.id}}" class="btn btn-small" href="javascript:void(0);">Respond</a>
 </span>         
 <br />
 <span>Created  {{ journal.created|date('M d Y, h:ia') }}  / Updated  {{ journal.updated|date('M d Y, h:ia') }}</span>

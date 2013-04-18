@@ -73,6 +73,26 @@ class ResponseController extends Controller
             'form'   => $form->createView()
         );
     }
+    
+    /**
+     * Displays a form to create a new Response response.
+     *
+     * @Route("/{courseid}/{source}/{sourceid}/{view}/new_modal", name="response_new_modal")
+     * @Template()
+     */
+    public function newModalAction($source, $sourceid)
+    {
+        $response = new Response();
+        $response->setBody('<p></p>');
+        $form   = $this->createForm(new ResponseType(), $response);
+
+        return array(
+            'response' => $response,
+            'source' => $source,
+            'sourceid' => $sourceid,
+            'form'   => $form->createView()
+        );
+    }    
 
     /**
      * Creates a new Response response.

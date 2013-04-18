@@ -1,0 +1,29 @@
+{# Marca/ResponseBundle/Resources/views/Response/newModal.html.twig #}
+
+<script language="javascript"> 
+$(document).ready(function()
+{
+CKEDITOR.replace( 'marca_responsebundle_responsetype_body',  {
+    customConfig: '{{ asset('bundles/marcahome/js/ckeditor_local/ckeditor_config.js') }}'
+} );
+$('#response_new').ajaxForm(function() { 
+alert("Thank you for your response!");
+$('#journal_modal').modal('hide');
+});
+$('form li').addClass('alert alert-error');
+});
+</script>
+<form id="response_new" action="{{ course_path('response_create', { 'source': source, 'sourceid': sourceid,'view': app.request.get('view') }) }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">New Response</h3>
+</div>
+<div class="modal-body">
+        {{ form_errors(form) }}
+         {{ form_row(form.body) }}
+         {{ form_rest(form) }}
+</div>
+<div class="modal-footer">
+            <button class="btn btn-primary" type="submit">Create</button><button type="button" class="btn btn-small" data-dismiss="modal" aria-hidden="true">Cancel</button> 
+</div>
+</form>

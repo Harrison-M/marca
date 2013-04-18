@@ -7,9 +7,13 @@ CKEDITOR.replace( 'marca_journalbundle_journaltype_body',  {
     customConfig: '{{ asset('bundles/marcahome/js/ckeditor_local/ckeditor_config.js') }}'
 } );
 $('form li').addClass('alert alert-error');
+$('#journal_new').ajaxForm(function() { 
+alert("Thank you for your comment!"); 
+});
+            
 });
 </script>
-<form class="form" action="{{ course_path('journal_create') }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+<form id="journal_new" class="form" action="{{ course_path('journal_create') }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">New Entry</h3>
