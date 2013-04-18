@@ -3,7 +3,10 @@
 {% extends '::base.html.twig' %}
 {% block title %}Marca | Journal{% endblock %}
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+<script src="{{ asset('bundles/marcahome/js/ckeditor/ckeditor.js') }}"></script>
+{% endblock %}
+
 {% block stylesheets %}{% endblock %}
 
 {% block subnav %}
@@ -13,7 +16,7 @@
 
 {% block sidebar %}
        <li><legend>Journal</legend></li>
-             <a class="btn btn-primary" href="{{ course_path('journal_new')  }}" >Create<i class="icon-pencil icon-white"></i></a>
+             <a id="journal_new" class="btn btn-primary" href="javascript:void(0);" >Create<i class="icon-pencil icon-white"></i></a>
              <li><a href="{{ course_path('journal') }}">List Entries</a></li>  
              {% if role==2 %}
              <li class="dropdown">

@@ -123,6 +123,15 @@ form ul li {list-style: none;}
 #file_modal .modal-footer {
     margin-bottom: -25px;
 }
+
+#journal_modal  {
+top:auto;bottom:1%;left:auto;right: 1%;width:60%;
+}
+#journal_modal .form {
+margin-bottom: 0px;
+}
+
+
 #markup {width:100%;}
 #project_nav {padding:5px;padding-left: 20px;padding-right: 20px;margin-bottom:5px;}
 #project_breadcrumbs {padding:0px;padding-left: 20px;padding-right: 20px;}

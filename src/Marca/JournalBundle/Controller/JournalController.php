@@ -122,6 +122,33 @@ class JournalController extends Controller
     }
 
     /**
+     * Displays a form to create a new Journal entity.
+     *
+     * @Route("/{courseid}/new_modal", name="journal_new_modal")
+     * @Template()
+     */
+    public function newModalAction($courseid)
+    {
+        $allowed = array(self::ROLE_INSTRUCTOR, self::ROLE_STUDENT);
+        $this->restrictAccessTo($allowed);
+        
+        $em = $this->getEm();
+        $roll = $em->getRepository('MarcaCourseBundle:Roll')->findRollByCourse($courseid);
+        
+        $journal = new Journal();
+        $journal->setBody('<p></p>');
+        
+        $form   = $this->createForm(new JournalType(), $journal);
+        
+        return array(
+            'journal' => $journal,
+            'form'   => $form->createView(),
+            'roll' => $roll 
+        );
+    }
+    
+    
+    /**
      * Creates a new Journal entity.
      *
      * @Route("/{courseid}/create", name="journal_create")

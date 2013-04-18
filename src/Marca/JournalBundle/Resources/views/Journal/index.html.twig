@@ -3,7 +3,16 @@
 {% extends 'MarcaJournalBundle::layout.html.twig' %}
 
 {% block content %}
-
+<script language="javascript">
+$(document).ready(function() { 
+$('#journal_new').click(function(){
+  $('#journal_modal').load('{{ course_path('journal_new_modal')  }}');
+  $('#journal_modal').modal({
+  backdrop: false
+  });
+});    
+});
+</script>
 {% if app.request.attributes.get('_route')=='journal_user' %}
 <div class="span9"> 
 <ul class="breadcrumb well">
@@ -79,5 +88,10 @@ You don’t have any journals yet. Why not <a href="{{ course_path('journal_new'
     {{ knp_pagination_render(journal) }}
 </div>              
 </div>
+
+{# Modal #}
+<div id="journal_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">     
+</div>
+
 </div>
 {% endblock %}

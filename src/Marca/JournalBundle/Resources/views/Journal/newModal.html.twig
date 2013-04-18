@@ -1,0 +1,27 @@
+{# Marca/JournalBundle/Resources/views/Journal/newModal.html.twig #}
+
+<script language="javascript"> 
+$(document).ready(function()
+{
+CKEDITOR.replace( 'marca_journalbundle_journaltype_body',  {
+    customConfig: '{{ asset('bundles/marcahome/js/ckeditor_local/ckeditor_config.js') }}'
+} );
+$('form li').addClass('alert alert-error');
+});
+</script>
+<form class="form" action="{{ course_path('journal_create') }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">New Entry</h3>
+</div>
+<div class="modal-body">
+     {{ form_errors(form) }}
+         {{ form_row(form.title) }}
+         {{ form_row(form.body) }}
+    {{ form_rest(form) }}
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="submit">Submit</button><a class='btn' href="{{ course_path('journal') }}">Cancel</a> 
+</div>
+</form>
+
