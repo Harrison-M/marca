@@ -92,7 +92,8 @@ class JournalController extends Controller
         return array(
             'journal'      => $journal,
             'delete_form' => $deleteForm->createView(), 
-            'roll' => $roll      );
+            'roll' => $roll, 
+            'role' => $role      );
     }
 
     /**
@@ -107,6 +108,7 @@ class JournalController extends Controller
         $this->restrictAccessTo($allowed);
         
         $em = $this->getEm();
+        $role = $this->getCourseRole();
         $roll = $em->getRepository('MarcaCourseBundle:Roll')->findRollByCourse($courseid);
         
         $journal = new Journal();
@@ -117,7 +119,8 @@ class JournalController extends Controller
         return array(
             'journal' => $journal,
             'form'   => $form->createView(),
-            'roll' => $roll 
+            'roll' => $roll, 
+            'role' => $role 
         );
     }
 
@@ -161,6 +164,7 @@ class JournalController extends Controller
         $this->restrictAccessTo($allowed);
         
         $em = $this->getEm();
+        $role = $this->getCourseRole();
         $roll = $em->getRepository('MarcaCourseBundle:Roll')->findRollByCourse($courseid);
         $user = $this->getUser();
         
@@ -185,7 +189,8 @@ class JournalController extends Controller
         return array(
             'journal' => $journal,
             'form'   => $form->createView(),
-            'roll' => $roll
+            'roll' => $roll, 
+            'role' => $role
         );
     }
 
@@ -201,6 +206,7 @@ class JournalController extends Controller
         $this->restrictAccessTo($allowed);
 
         $em = $this->getEm();
+        $role = $this->getCourseRole();
         $user = $this->getUser();
         $roll = $em->getRepository('MarcaCourseBundle:Roll')->findRollByCourse($courseid);
 
@@ -220,7 +226,8 @@ class JournalController extends Controller
             'journal'      => $journal,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'roll' => $roll
+            'roll' => $roll, 
+            'role' => $role
         );
     }
 
@@ -237,6 +244,7 @@ class JournalController extends Controller
         $this->restrictAccessTo($allowed);
         
         $em = $this->getEm();
+        $role = $this->getCourseRole();
         $journal = $em->getRepository('MarcaJournalBundle:Journal')->find($id);
         $roll = $em->getRepository('MarcaCourseBundle:Roll')->findRollByCourse($courseid);
 
@@ -262,7 +270,8 @@ class JournalController extends Controller
             'journal'      => $journal,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'roll' => $roll
+            'roll' => $roll, 
+            'role' => $role
         );
     }
 
@@ -279,6 +288,7 @@ class JournalController extends Controller
         
         $user = $this->getUser();
         $em = $this->getEm();
+        $role = $this->getCourseRole();
         $journal = $em->getRepository('MarcaJournalBundle:Journal')->find($id);
         
         $form = $this->createDeleteForm($id);
