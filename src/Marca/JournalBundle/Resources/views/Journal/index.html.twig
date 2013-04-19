@@ -48,7 +48,7 @@ Journal entries by {{ user.firstname }} {{ user.lastname }}
 
 <div class="span9 well">       
 {% for journal in journal %}
-<div class="span7 center">
+<div id="journal{{journal.id}}" class="span7 center">
 <div class="page-header" >
 <strong><span class="journal-title">{{ journal.title }}</span></strong>
 <span class="pull-right">

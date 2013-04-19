@@ -111,11 +111,13 @@ class ResponseController extends Controller
         $response  = new Response();
         $response->setUser($user);
         
-        if ($source == 'journal')
+        if ($source === 'journal' || $source === 'journal_modal' )
         {
             $journal = $em->getRepository('MarcaJournalBundle:Journal')->find($sourceid);
             $response->setJournal($journal);
+            $source = 'journal_show_modal';
         }
+       
             else
         {
             $doc = $em->getRepository('MarcaDocBundle:Doc')->find($sourceid);

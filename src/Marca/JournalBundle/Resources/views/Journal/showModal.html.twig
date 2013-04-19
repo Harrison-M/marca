@@ -1,0 +1,33 @@
+{# Marca/JournalBundle/Resources/views/Journal/showModal.html.twig #}
+
+
+<div class="page-header" >
+<strong><span class="journal-title">{{ journal.title }}</span></strong>
+<span class="pull-right">
+{% if journal.isOwner(app.user.username) %}
+        <a class="btn btn-primary btn-small" href="{{ course_path('journal_edit', { 'id': journal.id }) }}">Edit</a>
+{% endif %} 
+        <a id="response{{journal.id}}" class="btn btn-small" href="javascript:void(0);">Respond</a>
+</span>         
+<br />
+<span>Created  {{ journal.created|date('M d Y, h:ia') }}  / Updated  {{ journal.updated|date('M d Y, h:ia') }}</span>
+</div>
+<div class="journal-body">
+{{ journal.body|raw }}
+</div>    
+    <div class="span7 pull-right">
+    {% for response in journal.responses %}
+    {% if loop.first %}    
+    <div class="page-header margin-left" >
+    <strong>Responses</strong>
+    </div>       
+    {% endif %}      
+            <div class="span6 well">
+                <strong>By {{ response.user.firstname}} {{ response.user.lastname}}</strong>
+               {{ response.body|raw }} 
+                {% if response.isOwner(app.user.username) %}
+                <a class="btn btn-primary btn-mini pull-right" href="{{ course_path('response_edit', { 'id': response.id,'sourceid': journal.id, 'source': 'journal','view': 'app' }) }}">Edit</a>
+                {% endif %}
+            </div>   
+    {% endfor %}    
+</div>        

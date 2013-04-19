@@ -82,6 +82,7 @@ class JournalController extends Controller
         
         $em = $this->getEm();
         $journal = $em->getRepository('MarcaJournalBundle:Journal')->find($id);
+        $role = $this->getCourseRole();
         $roll = $em->getRepository('MarcaCourseBundle:Roll')->findRollByCourse($courseid);
         
         if (!$journal) {
@@ -193,6 +194,35 @@ class JournalController extends Controller
             'role' => $role
         );
     }
+    
+    
+     /**
+     * Finds and displays a Journal entity.
+     *
+     * @Route("/{courseid}/{id}/show_modal", name="journal_show_modal")
+     * @Template()
+     */
+    public function showModalAction($courseid, $id)
+    {
+        $allowed = array(self::ROLE_INSTRUCTOR, self::ROLE_STUDENT);
+        $this->restrictAccessTo($allowed);
+        
+        $em = $this->getEm();
+        $journal = $em->getRepository('MarcaJournalBundle:Journal')->find($id);
+        $role = $this->getCourseRole();
+        $roll = $em->getRepository('MarcaCourseBundle:Roll')->findRollByCourse($courseid);
+        
+        if (!$journal) {
+            throw $this->createNotFoundException('Unable to find Journal entity.');
+        }
+        
+        $deleteForm = $this->createDeleteForm($id);
+        return array(
+            'journal'      => $journal,
+            'delete_form' => $deleteForm->createView(), 
+            'roll' => $roll, 
+            'role' => $role      );
+    }   
 
     /**
      * Displays a form to edit an existing Journal entity.

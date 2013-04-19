@@ -6,17 +6,25 @@ $(document).ready(function()
 CKEDITOR.replace( 'marca_responsebundle_responsetype_body',  {
     customConfig: '{{ asset('bundles/marcahome/js/ckeditor_local/ckeditor_config.js') }}'
 } );
-$('#response_new').ajaxForm(function() { 
-alert("Thank you for your response!");
-$('#journal_modal').modal('hide');
-});
+    var options = { 
+        target:        '#{{source}}{{sourceid}}',
+        success:       showResponse
+    };
+    $('#response_new').submit(function() { 
+        $(this).ajaxSubmit(options); 
+        return false; 
+    });  
+function showResponse(responseText, statusText, xhr, $form)  { 
+    $('#{{source}}_modal').modal('toggle'); 
+}   
 $('form li').addClass('alert alert-error');
 });
 </script>
-<form id="response_new" action="{{ course_path('response_create', { 'source': source, 'sourceid': sourceid,'view': app.request.get('view') }) }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+{% set return = source ~ '_modal'%}
+<form id="response_new" action="{{ course_path('response_create', { 'source': return, 'sourceid': sourceid,'view': app.request.get('view') }) }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">New Response</h3>
+    <h3 id="myModalLabel">New Response #{{source}}{{sourceid}}</h3>
 </div>
 <div class="modal-body">
         {{ form_errors(form) }}
