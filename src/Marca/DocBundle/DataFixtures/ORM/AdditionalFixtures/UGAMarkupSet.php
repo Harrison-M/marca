@@ -3,6 +3,7 @@
 namespace Marca\DocBundle\DataFixtures\ORM\AdditionalFixtures;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Marca\DocBundle\Entity\Markupset;
@@ -16,7 +17,7 @@ use Doctrine\ORM\EntityManager;
  *
  * @author Ron
  */
-class LoadMarkupsetData implements FixtureInterface
+class UGAMarkupSet implements FixtureInterface, OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -314,6 +315,18 @@ $markup->addMarkupset($markupset);
 $markup->setLinktext($linktext);
 return $markup;
     }
+
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return 10;
+    }
+
+
 }
 
 
