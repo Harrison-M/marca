@@ -237,7 +237,7 @@ class CalendarController extends Controller
         $startDate = strtotime($postData['startDate']);
         $gotodate = date("Y-m-d", $startDate);
         $form    = $this->createForm(new CalendarType(), $calendar);
-        $form->bindRequest($request);
+        $form->bind($request);
         
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
@@ -341,7 +341,7 @@ class CalendarController extends Controller
         $postData = $request->request->get('marca_calendarbundle_calendartype');
         $startDate = strtotime($postData['startDate']);
         $gotodate = date("Y-m-d", $startDate);
-        $editForm->bindRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($calendar);
@@ -399,7 +399,7 @@ class CalendarController extends Controller
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();

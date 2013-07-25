@@ -88,7 +88,7 @@ class PortitemController extends Controller
         $portitem->setPortset($portset);
         $request = $this->getRequest();
         $form    = $this->createForm(new PortitemType(), $portitem);
-        $form->bindRequest($request);
+        $form->bind($request);
 
 
         if ($form->isValid()) {
@@ -155,7 +155,7 @@ class PortitemController extends Controller
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($portitem);
@@ -182,7 +182,7 @@ class PortitemController extends Controller
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getEm();

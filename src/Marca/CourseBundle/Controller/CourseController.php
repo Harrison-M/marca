@@ -177,7 +177,7 @@ class CourseController extends Controller
         $request = $this->getRequest();
         $module = $request->request->get('module');
         $form    = $this->createForm(new CourseType($options), $course);
-        $form->bindRequest($request);
+        $form->bind($request);
         
         $roll = new Roll();
         $roll->setRole(Roll::ROLE_INSTRUCTOR);
@@ -315,7 +315,7 @@ class CourseController extends Controller
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($course);
@@ -353,7 +353,7 @@ class CourseController extends Controller
         $request = $this->getRequest();
     
         
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             
@@ -436,7 +436,7 @@ class CourseController extends Controller
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($course);

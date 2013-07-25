@@ -106,7 +106,7 @@ class TagController extends Controller
         $tag->setUser($user);
         $request = $this->getRequest();
         $form    = $this->createForm(new TagType(), $tag);
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getEm();
@@ -171,7 +171,7 @@ class TagController extends Controller
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($tag);
@@ -198,7 +198,7 @@ class TagController extends Controller
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getEm();

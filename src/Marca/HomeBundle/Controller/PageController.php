@@ -84,7 +84,7 @@ class PageController extends Controller
         $page  = new Page();
         $request = $this->getRequest();
         $form    = $this->createForm(new PageType(), $page);
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getEm();
@@ -149,7 +149,7 @@ class PageController extends Controller
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($page);
@@ -176,7 +176,7 @@ class PageController extends Controller
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getEm();

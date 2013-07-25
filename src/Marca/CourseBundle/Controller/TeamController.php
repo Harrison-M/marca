@@ -127,7 +127,7 @@ class TeamController extends Controller
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             
@@ -180,7 +180,7 @@ class TeamController extends Controller
         $team->setCourse($course);
         $request = $this->getRequest();
         $form    = $this->createForm(new TeamType(), $team);
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             

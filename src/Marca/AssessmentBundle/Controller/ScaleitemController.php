@@ -88,7 +88,7 @@ class ScaleitemController extends Controller
         $scaleitem->setScale($scale);
         $request = $this->getRequest();
         $form    = $this->createForm(new ScaleitemType(), $scaleitem);
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
@@ -157,7 +157,7 @@ class ScaleitemController extends Controller
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($scaleitem);
@@ -184,7 +184,7 @@ class ScaleitemController extends Controller
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
