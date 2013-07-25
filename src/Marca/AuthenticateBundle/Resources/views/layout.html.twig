@@ -1,6 +1,12 @@
 {% extends 'MarcaUserBundle::layout.html.twig' %}
 
 {% block content %}
+<script language="javascript"> 
+$(document).ready(function()
+{
+$("#_submit").addClass("btn btn-primary");
+});
+</script>
 <div class="row">
 <div class="span5">  
 <h2>Welcome to {{ application_name }}</h2> 
@@ -17,11 +23,13 @@
 </a>
 {% endif %}
 
-{% for key, message in app.session.getFlashes() %}
-<div class="{{ key }}">
-{{ message|trans({}, 'FOSUserBundle') }}
-</div>
-{% endfor %}
+        {% for type, messages in app.session.flashBag.all %}
+            {% for message in messages %}
+                <div class="{{ type }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endfor %}
+        {% endfor %}        
 
 {% block fos_user_content %}
 {% endblock fos_user_content %}
