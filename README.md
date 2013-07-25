@@ -1,5 +1,3 @@
-Dev Branch
-
 Marca Rebuild by Calliope Initiative 
 ========================
 by Ron Balthazor, Sara Steger, Robin Wharton, John Weatherford, and Andy Famiglietti 
@@ -15,23 +13,6 @@ For more information about Calliope, please contact robin@calliopeinitiative.org
 
 
 Marca is built with Symfony (http://symfony.com/)
-
-
-Documentation
-========================
-
-Symfony Bundles Included
-
-
-Twitter Bootstrap
-
-JQuery
-
-
-Ckeditor
-
-
-Spectrum Colorpicker
 
 
 
