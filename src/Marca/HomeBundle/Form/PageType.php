@@ -10,10 +10,11 @@ class PageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('homepage')    
+        $builder   
             ->add('title')
             ->add('body')
+            ->add('type', 'choice', array('choices'   => array(0 => 'Homepage', 1 => 'Consent'),'required'  => true,'label'  => 'Choose placement for this page', 'expanded' => true,'attr' => array('class' => 'checkbox inline'),))   
+    
             
         ;
     }

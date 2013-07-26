@@ -65,7 +65,7 @@ class RatingsetController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
 
         $ratingset = $em->getRepository('MarcaAssessmentBundle:Ratingset')->find($id);
 
@@ -92,7 +92,7 @@ class RatingsetController extends Controller
      */
     public function updateAction($courseid,$id,$userid,$user)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
 
         $entity = $em->getRepository('MarcaAssessmentBundle:Ratingset')->find($id);
 
@@ -135,7 +135,7 @@ class RatingsetController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $entity = $em->getRepository('MarcaAssessmentBundle:Ratingset')->find($id);
 
             if (!$entity) {

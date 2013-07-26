@@ -24,7 +24,7 @@ class PortitemController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
 
         $portitems = $em->getRepository('MarcaPortfolioBundle:Portitem')->findAll();
 
@@ -39,7 +39,7 @@ class PortitemController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
 
         $portitem = $em->getRepository('MarcaPortfolioBundle:Portitem')->find($id);
 
@@ -92,7 +92,7 @@ class PortitemController extends Controller
 
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $em->persist($portitem);
             $em->flush();
 
@@ -114,7 +114,7 @@ class PortitemController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
 
         $portitem = $em->getRepository('MarcaPortfolioBundle:Portitem')->find($id);
 

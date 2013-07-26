@@ -15,7 +15,7 @@
         $form->bindRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find($id);
 
             if (!$entity) {

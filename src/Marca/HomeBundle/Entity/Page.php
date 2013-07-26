@@ -14,6 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Page
 {
+    const TYPE_HOME=0;
+    const TYPE_RESEARCH=1;
+
+    
     /**
      * @var integer $id
      *
@@ -39,11 +43,11 @@ class Page
     private $body;
     
     /**
-     * @var boolean $homepage
+     * @var integer $type
      *
-     * @ORM\Column(name="homepage", type="boolean")
+     * @ORM\Column(name="type", type="integer", nullable=true)
      */
-    private $homepage = true;    
+    private $type = 0;    
     
     /**
     * @ORM\Column(type="datetime", nullable=true)
@@ -113,29 +117,6 @@ class Page
     }
 
     /**
-     * Set homepage
-     *
-     * @param boolean $homepage
-     * @return Page
-     */
-    public function setHomepage($homepage)
-    {
-        $this->homepage = $homepage;
-    
-        return $this;
-    }
-
-    /**
-     * Get homepage
-     *
-     * @return boolean 
-     */
-    public function getHomepage()
-    {
-        return $this->homepage;
-    }
-
-    /**
      * Set created
      *
      * @param \DateTime $created
@@ -179,5 +160,28 @@ class Page
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return Page
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

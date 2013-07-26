@@ -117,7 +117,7 @@ class ObjectiveController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
 
         $objective = $em->getRepository('MarcaAssessmentBundle:Objective')->find($id);
 

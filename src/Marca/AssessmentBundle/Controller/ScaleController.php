@@ -24,7 +24,7 @@ class ScaleController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
 
         $scales = $em->getRepository('MarcaAssessmentBundle:Scale')->findAll();
 
@@ -39,7 +39,7 @@ class ScaleController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
 
         $scale = $em->getRepository('MarcaAssessmentBundle:Scale')->find($id);
 
@@ -86,7 +86,7 @@ class ScaleController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $em->persist($scale);
             $em->flush();
 
@@ -108,7 +108,7 @@ class ScaleController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
 
         $scale = $em->getRepository('MarcaAssessmentBundle:Scale')->find($id);
 
@@ -135,7 +135,7 @@ class ScaleController extends Controller
      */
     public function updateAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
 
         $scale = $em->getRepository('MarcaAssessmentBundle:Scale')->find($id);
 
@@ -178,7 +178,7 @@ class ScaleController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $scale = $em->getRepository('MarcaAssessmentBundle:Scale')->find($id);
 
             if (!$scale) {

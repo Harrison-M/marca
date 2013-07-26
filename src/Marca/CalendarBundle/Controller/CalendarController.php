@@ -240,7 +240,7 @@ class CalendarController extends Controller
         $form->bind($request);
         
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $em->persist($calendar);
             $em->flush();
 
@@ -402,7 +402,7 @@ class CalendarController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $calendar = $em->getRepository('MarcaCalendarBundle:Calendar')->find($id);
 
             if (!$calendar) {

@@ -80,7 +80,7 @@ class ResponseController extends Controller
             $form->bind($request);
 
             if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $em->persist($response);
             $em->flush();
 
@@ -105,7 +105,7 @@ class ResponseController extends Controller
             $form->bind($request);
 
             if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $em->persist($response);
             $em->flush();
 
@@ -253,7 +253,7 @@ class ResponseController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $response = $em->getRepository('MarcaResponseBundle:Response')->find($id);
 
             if (!$response) {

@@ -64,7 +64,7 @@ class MarkupController extends Controller
     {
         $markup = new Markup();
         $form   = $this->createForm(new MarkupType(), $markup, array(
-            'em'=>$this->getDoctrine()->getEntityManager(),
+            'em'=>$this->getEm(),
         ));
 
         return array(
@@ -92,7 +92,7 @@ class MarkupController extends Controller
         $markup->addMarkupset($markupset);
         $request = $this->getRequest();
         $form    = $this->createForm(new MarkupType(), $markup, array(
-            'em'=>$this->getDoctrine()->getEntityManager(),
+            'em'=>$this->getEm(),
         ));
         $form->bind($request);
 
@@ -132,7 +132,7 @@ class MarkupController extends Controller
         }
 
         $editForm = $this->createForm(new MarkupType(), $markup, array(
-            'em'=>$this->getDoctrine()->getEntityManager(),
+            'em'=>$this->getEm(),
         ));
         $deleteForm = $this->createDeleteForm($id);
 
@@ -161,7 +161,7 @@ class MarkupController extends Controller
         }
 
         $editForm   = $this->createForm(new MarkupType(), $markup, array(
-            'em'=>$this->getDoctrine()->getEntityManager(),
+            'em'=>$this->getEm(),
         ));
         $deleteForm = $this->createDeleteForm($id);
 

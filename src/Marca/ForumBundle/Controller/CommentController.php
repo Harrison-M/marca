@@ -69,7 +69,7 @@ class CommentController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $em->persist($comment);
             $em->flush();
 
@@ -97,7 +97,7 @@ class CommentController extends Controller
         $allowed = array(self::ROLE_INSTRUCTOR, self::ROLE_STUDENT);
         $this->restrictAccessTo($allowed);
         
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
         $user = $this->getUser();
         $parent = $em->getRepository('MarcaForumBundle:Forum')->find($parentid);   
         $comment = $em->getRepository('MarcaForumBundle:Comment')->find($id);
@@ -132,7 +132,7 @@ class CommentController extends Controller
         $allowed = array(self::ROLE_INSTRUCTOR, self::ROLE_STUDENT);
         $this->restrictAccessTo($allowed);
         
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getEm();
         $parent = $em->getRepository('MarcaForumBundle:Forum')->find($parentid);   
         $comment = $em->getRepository('MarcaForumBundle:Comment')->find($id);
 
@@ -179,7 +179,7 @@ class CommentController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getEm();
             $comment = $em->getRepository('MarcaForumBundle:Comment')->find($id);
 
             if (!$comment) {

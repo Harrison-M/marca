@@ -60,7 +60,7 @@ class InstitutionController extends Controller {
         if ($form->isValid()){
             $em->persist($institution);
             $em->flush();
-            return $this->redirect($this->generateUrl('institution2', array('id' => $institution->getId())));
+            return $this->redirect($this->generateUrl('institution', array('id' => $institution->getId())));
         }
         return array('form' => $form->createView(), 'institution' => $institution);
     }
