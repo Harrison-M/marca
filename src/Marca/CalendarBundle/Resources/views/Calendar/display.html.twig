@@ -74,7 +74,7 @@ $('#calendar').fullCalendar(
 {% set gotoyear = gotodate|date('Y') %}
 {% set gotomonth = gotodate|date('m') -1 %}     
 $('#calendar').fullCalendar( "gotoDate", {{gotoyear}},  {{gotomonth}} ); 
-$('.well').delay(2000).animate({ borderColor: '#E3E3E3', borderWidth: '1px'  }, 2000);    
+$('.well').delay(2000).animate({ borderColor: '#E3E3E3' }, 2000)  ;    
 });
 </script>
 
