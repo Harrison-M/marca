@@ -5,17 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{% block title %}Welcome!{% endblock %}</title>
-<script src="{{ asset('bundles/marcahome/js/jquery-1.7.2.min.js') }}"></script>
-<script src="{{ asset('bundles/marcahome/js/jquery-ui-1.8.22.custom.min.js') }}"></script>
-<script src="{{ asset('bundles/marcahome/js/bootstrap.js') }}"></script>
-<script src="{{ asset('bundles/marcahome/js/jquery.form.js') }}"></script>
 
 {% include '::external.html.twig' %}
 <link type="text/css" rel="stylesheet" href="{{ asset('bundles/marcahome/css/bootstrap.css') }}">
 <link type="text/css" rel="stylesheet" href="{{ asset('bundles/marcahome/css/bootstrap-responsive.css') }}">
 <link type="text/css" rel="stylesheet" href="{{ asset('bundles/marcahome/css/local.css') }}">
 <link type="text/css" rel="stylesheet" href="{{ asset('bundles/marcahome/css/external.css') }}">
-{% block javascripts %}{% endblock %}
+{% block page_javascripts %}
+    <script src="{{ asset('bundles/marcahome/js/jquery-1.7.2.min.js') }}"></script>
+    <script src="{{ asset('bundles/marcahome/js/jquery-ui-1.8.22.custom.min.js') }}"></script>
+    <script src="{{ asset('bundles/marcahome/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/marcahome/js/jquery.form.js') }}"></script>
+
+    {% block javascripts %}{% endblock %}
+{% endblock %}
+
 {% block stylesheets %}{% endblock %}
 <link rel="icon" type="image/png" href="{{ asset('bundles/marcahome/img/favicons/favicon_32.png') }}" />
 <link rel="icon" type="image/png" href="{{ asset('bundles/marcahome/img/favicons/favicon_64.png') }}" />

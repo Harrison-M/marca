@@ -25,4 +25,5 @@ parameters:
 
     upload_path:       %kernel.root_dir%/../uploads/files
 
+    security_type:     ldap
 

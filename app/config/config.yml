@@ -1,6 +1,7 @@
 imports:
+    - { resource: defaults.yml }
     - { resource: parameters.yml }
-    - { resource: security.yml }
+    - { resource: security.php }
     - { resource: '@MarcaCourseBundle/Resources/config/services.yml' }
 
 framework:

@@ -1,21 +1,38 @@
 {# Marca/ResponseBundle/Resources/views/Response/edit.html.twig #}
 
 {% extends 'MarcaResponseBundle::layout.html.twig' %}
+{% import 'MarcaAdminBundle:Macros:macros.html.twig' as macros %}
+
+{% macro ckeditor(id, configFilename) %}
+    CKEDITOR.replace( '{{ id }}',  {
+       customConfig: '{{ asset('bundles/marcahome/js/ckeditor_local/{{ configFilename }}') }}'
+   } );
+{% endmacro %}
 
 {% block javascripts %}
-<script src="{{ asset('bundles/marcahome/js/ckeditor/ckeditor.js') }}"></script>
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/marcahome/js/ckeditor/ckeditor.js') }}"></script>
+
+    <script language="javascript">
+   $(document).ready(function()
+   {
+       {{ include('MarcaAdminBundle:Default:_ckeditor.html.twig', {
+        'id': 'marca_',
+        'config': 'ckeditor_config.js'
+       }) }}
+
+       {{ macros.ckeditor('ss', 'ss') }}
+
+   CKEDITOR.replace( 'marca_responsebundle_responsetype_body',  {
+       customConfig: '{{ asset('bundles/marcahome/js/ckeditor_local/ckeditor_config.js') }}'
+   } );
+   $('form li').addClass('alert alert-error');
+   });
+   </script>
 {% endblock %}
 
 {% block content %}
- <script language="javascript"> 
-$(document).ready(function()
-{
-CKEDITOR.replace( 'marca_responsebundle_responsetype_body',  {
-    customConfig: '{{ asset('bundles/marcahome/js/ckeditor_local/ckeditor_config.js') }}'
-} );
-$('form li').addClass('alert alert-error');
-});
-</script>    
 
 {% if journal %}
 <div class="span9 well">  
