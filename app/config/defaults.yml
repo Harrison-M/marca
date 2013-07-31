@@ -1,0 +1,28 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     ~
+    database_name:     marca
+    database_user:     root
+    database_password:
+
+    mailer_transport:  smtp
+    mailer_host:       ~
+    mailer_port:       ~
+    mailer_sender_address: you@example.com
+    mailer_user:       ~
+    mailer_password:   ~
+    mailer_encryption:  tls
+    from_email:        you@example.com
+
+    ldap_host:         xxx.xxx.xxx
+    ldap_port:         xxx
+
+    locale:            en
+    secret:            xxxx
+    app_name:          Marca!
+    ldap:              false
+
+    upload_path:       %kernel.root_dir%/../uploads/files
+    wkhtmltopdf_path:  /usr/bin/wkhtmltopdf
+
